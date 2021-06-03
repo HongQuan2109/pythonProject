@@ -1,0 +1,53 @@
+import re
+
+name = input("enter your name please : ")
+gender = input("enter your gender: (Male/Female) ")
+final = ""
+check_gender = ""
+
+
+if gender.lower() == "male" or gender.lower() == "female":
+        print(" Hi !", name, ", your gender is :", gender)
+else :
+        gender = input("Wrong form !! please enter your gender only Male or Female :")
+
+def my_check_gender(gender):
+    if gender.lower() == "male":
+        check_gender = re.sub('male', 'Mr.', gender)
+    if gender.lower() == "female":
+        check_gender = re.sub('female', 'Ms.', gender)
+    return check_gender
+
+grade_list = []
+grade = int(input('Enter a grade between 0 and 5: (input -1 to exit) '))
+
+while grade != -1:
+
+    if 0 <= grade <= 5:
+        grade_list.append(grade)
+    else:
+        print('invalid grade, try again with higher than 0 and lower than 5')
+    grade = int(input('Enter a grade between 0 and 5: (input - to exit) '))
+
+def my_sum(lst):
+
+    sum = 0
+    for grade in lst: sum += grade
+    return sum
+
+
+def my_sub(lst):
+    s_u_b = 0
+    for item in lst: s_u_b -= grade
+    return s_u_b
+
+
+def my_average(lst):
+    return my_sum(lst) / len(lst)
+
+def my_final(lst):
+    if my_average(grade_list) >= 1:
+        final = "PASS"
+    else:
+        final = "FALSE"
+    return final
